@@ -12,7 +12,9 @@
 
   const talkStore = useTalkStore()
   // console.log('talkStore', talkStore);
-  
+  talkStore.$subscribe((mutate,state)=>{    //通过 store 的 `$subscribe()` 方法侦听 `state` 及其变化
+    localStorage.setItem('talkList',JSON.stringify(state.talkList))
+  })
   // 方法
   function getLoveTalk(){
     talkStore.getTalk()
